@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-1-29 16:46:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.YY.model.TbUser" table="tb_user" catalog="platformanage">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="userId" type="string">
+            <column name="userId" />
+        </property>
+        <property name="userEmail" type="string">
+            <column name="userEmail" />
+        </property>
+        <property name="userName" type="string">
+            <column name="userName" />
+        </property>
+        <property name="password" type="string">
+            <column name="password" />
+        </property>
+        <property name="roleId" type="java.lang.Integer">
+            <column name="roleId" />
+        </property>
+        <property name="useRegisterTime" type="timestamp">
+            <column name="useRegisterTime" length="0" />
+        </property>
+        <property name="userLoginTime" type="timestamp">
+            <column name="userLoginTime" length="0" />
+        </property>
+        <property name="isLogin" type="java.lang.Integer">
+            <column name="isLogin" />
+        </property>
+        <property name="isDeleted" type="java.lang.Integer">
+            <column name="isDeleted" />
+        </property>
+    </class>
+</hibernate-mapping>

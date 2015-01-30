@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+			http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- 自动扫描与装配Bean对象 -->
+	<context:component-scan base-package="com.YY"></context:component-scan>
+
+	<!-- 导入外部的properties文件 -->
+	<context:property-placeholder location="classpath:jdbc.properties" />
+
+	<!-- 配置SessionFactory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<!-- 指定hibernate配置文件的路径 -->
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<!-- 配置c2p0数据库连接池 -->
+		<property name="dataSource">
+			<bean class="com.mchange.v2.c3p0.ComboPooledDataSource">
+				<property name="driverClass">
+					<value>${jdbc.driver}</value>
+				</property>
+				<property name="jdbcUrl">
+					<value>${jdbc.url}</value>
+				</property>
+				<property name="user">
+					<value>${jdbc.user}</value>
+				</property>
+				<property name="password">
+					<value>${jdbc.pwd}</value>
+				</property>
+				<property name="minPoolSize">
+					<value>${jdbc.minPoolSize}</value>
+				</property>
+				<property name="maxPoolSize">
+					<value>${jdbc.maxPoolSize}</value>
+				</property>
+				<property name="initialPoolSize">
+					<value>${jdbc.initialPoolSize}</value>
+				</property>
+				<property name="maxIdleTime">
+					<value>${jdbc.maxIdleTime}</value>
+				</property>
+				<property name="acquireIncrement">
+					<value>${jdbc.maxIdleTime}</value>
+				</property>
+				<property name="maxStatements">
+					<value>${jdbc.maxStatements}</value>
+				</property>
+			</bean>
+		</property>
+	</bean>
+	<!-- 配置声明式事务管理（采用朱姐的方法是） -->
+	<bean id="txManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<tx:annotation-driven transaction-manager="txManager" />
+
+
+
+</beans>
+	

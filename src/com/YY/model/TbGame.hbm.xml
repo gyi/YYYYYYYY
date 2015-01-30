@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-1-29 16:46:19 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.YY.model.TbGame" table="tb_game" catalog="platformanage">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="assigned" />
+        </id>
+        <property name="gameId" type="string">
+            <column name="gameId" />
+        </property>
+        <property name="userId" type="string">
+            <column name="userId" />
+        </property>
+        <property name="gameName" type="string">
+            <column name="gameName" />
+        </property>
+        <property name="gameModifyTime" type="timestamp">
+            <column name="gameModifyTime" length="0" />
+        </property>
+        <property name="gameIntroduce" type="string">
+            <column name="gameIntroduce" length="65535" />
+        </property>
+        <property name="gameIcon" type="string">
+            <column name="gameIcon" />
+        </property>
+        <property name="gamePicture" type="string">
+            <column name="gamePicture" />
+        </property>
+        <property name="gameVideo" type="string">
+            <column name="gameVideo" />
+        </property>
+        <property name="gameDownload" type="string">
+            <column name="gameDownload" />
+        </property>
+        <property name="gameGit" type="string">
+            <column name="gameGit" />
+        </property>
+        <property name="gameTab" type="string">
+            <column name="gameTab" />
+        </property>
+        <property name="gameCommentSum" type="java.lang.Integer">
+            <column name="gameCommentSum" />
+        </property>
+        <property name="gameBrowseSum" type="java.lang.Integer">
+            <column name="gameBrowseSum" />
+        </property>
+        <property name="gameSupportSum" type="java.lang.Integer">
+            <column name="gameSupportSum" />
+        </property>
+        <property name="gameOpposeSum" type="java.lang.Integer">
+            <column name="gameOpposeSum" />
+        </property>
+        <property name="gameDownloadSum" type="java.lang.Integer">
+            <column name="gameDownloadSum" />
+        </property>
+        <property name="gameGrade" type="java.lang.Integer">
+            <column name="gameGrade" />
+        </property>
+        <property name="isDeleted" type="java.lang.Integer">
+            <column name="isDeleted" />
+        </property>
+    </class>
+</hibernate-mapping>

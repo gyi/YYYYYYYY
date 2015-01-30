@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<!-- 配置为开发模式 -->
+	<constant name="struts.devMode" value="true" /> 
+	<!-- 把扩展名配置为action -->
+	<constant name="struts.action.extension" value="action" />
+	<!-- 把主题配置为simple -->
+	<constant name="struts.ui.theme" value="simple" />
+
+	<package name="default" namespace="/" extends="struts-default">
+
+		<interceptors>
+			<!-- 声明拦截器 -->
+			<interceptor name="checkPrivilege"
+				class="com.demo.util.CheckPrivilegeInterceptor"></interceptor>
+
+			<!-- 重新定义默认的拦截器栈 -->
+			<interceptor-stack name="defaultStack">
+				<interceptor-ref name="checkPrivilege"></interceptor-ref>
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		<default-action-ref name="notfound"></default-action-ref>
+		<action name="notfound" class="com.YY.action.NotFoundAction">
+			<result name="success">/index.jsp</result>			
+		</action>
+		
+		<!-- 用户管理 -->
+		<action name="user_*" class="userAction" method="{1}">
+			<result name="loginUI">/WEB-INF/web/common/loginUI.jsp</result>
+			<result name="toIndex" type="redirect">/WEB-INF/web/common/frame.jsp</result>
+		</action>
+
+	</package>
+
+
+	<!-- Add packages here -->
+
+</struts>
